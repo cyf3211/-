@@ -1,0 +1,9 @@
+<%= simple_form_for @movie_group do |f| %>
+  <div class="form-group">
+    <%= f.input :title, input_html: { class: "form-control"} %>
+    <%= f.input :description, input_html: { class: "form-control"} %>
+  </div>
+
+<%= f.submit "提交", :disable_with => 'Submiting...' %>
+
+<% end %>

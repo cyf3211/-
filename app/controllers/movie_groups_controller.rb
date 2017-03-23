@@ -18,6 +18,7 @@ class MovieGroupsController < ApplicationController
       redirect_to movie_groups_path
     else
       render :new
+    end
   end
 
   def edit
@@ -27,7 +28,7 @@ class MovieGroupsController < ApplicationController
   def update
     @movie_group = MovieGroup.find(params[:id])
     if @movie_group.update(movie_group_params)
-      redirect_to movie_groups_path, notice: "更新成功"
+      redirect_to movie_groups_path, notice: "更新成功！"
     else
       render :edit
     end
