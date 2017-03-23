@@ -8,6 +8,7 @@
         <td>#</td>
         <td>电影</td>
         <td>详情</td>
+        <td>创建者</td>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
           <td>#</td>
           <td><%= link_to(movie_group.title, movie_group_path(movie_group)) %></td>
           <td><%= movie_group.description %></td>
+          <td> <%= movie_group.user.email %> </td>
           <td>
               <%= link_to("编辑", edit_movie_group_path(movie_group), class: "btn btn-sm btn-default")%>
               <%= link_to("删除", movie_group_path(movie_group),    class: "btn btn-sm btn-default",
