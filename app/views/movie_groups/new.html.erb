@@ -4,6 +4,14 @@
     <hr>
     <%= form_for @movie_group do |f| %>
 
+    <% if @movie_group.errors.any? %>
+    <ul>
+      <% @movie_group.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
     片名
     <%= f.text_field :title %>
     <br>

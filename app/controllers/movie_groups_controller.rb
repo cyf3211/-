@@ -13,8 +13,11 @@ class MovieGroupsController < ApplicationController
 
   def create
     @movie_group = MovieGroup.new(movie_group_params)
-    @movie_group.save
-    redirect_to movie_groups_path
+
+    if @movie_group.save
+      redirect_to movie_groups_path
+    else
+      render :new
   end
 
   def edit
@@ -23,8 +26,11 @@ class MovieGroupsController < ApplicationController
 
   def update
     @movie_group = MovieGroup.find(params[:id])
-    @movie_group.update(movie_group_params)
-    redirect_to movie_groups_path, notice: "更新成功！"
+    if @movie_group.update(movie_group_params)
+      redirect_to movie_groups_path, notice: "更新成功"
+    else
+      render :edit
+    end
   end
 
   def destroy
