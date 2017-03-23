@@ -1,0 +1,2 @@
+module Account::MovieGroupsHelper
+end

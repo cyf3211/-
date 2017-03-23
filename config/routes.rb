@@ -8,5 +8,10 @@ Rails.application.routes.draw do
       post :unfavorite
     end
   end
+  namespace :account do
+    resources :movie_groups
+    resources :reviews
+  end
+
   root 'movie_groups#index'
 end

@@ -1,0 +1,28 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我收藏的电影 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> 电影 </th>
+        <th> 详情 </th>
+        <th> 发表篇数 </th>
+        <th> 更新时间 </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @movie_groups.each do |movie_group| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(movie_group.title, movie_group_path(movie_group)) %> </td>
+          <td> <%= movie_group.description %> </td>
+          <td> <%= movie_group.reviews.count %> </td>
+          <td> <%= movie_group.updated_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

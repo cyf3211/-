@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create]
-  before_action :find_movie_group_and_check_review_permission, only: [:new, :create]
+  before_action :find_movie_group_and_check_review_permission, only: [:new, :create,:edit,:update,:destroy]
 def new
   @review = Review.new
 end
@@ -15,6 +15,25 @@ def create
   else
     render :new
   end
+end
+
+def edit
+  @review = Review.find(params[:id])
+end
+
+def update
+  @review = Review.find(params[:id])
+  if @review.update(review_params)
+    redirect_to account_reviews_path, notice: "更新成功！"
+  else
+    render :edit
+  end
+end
+
+def destroy
+  @review = Review.find(params[:id])
+  @review.destroy
+  redirect_to account_reviews_path, alert: "删除成功！"
 end
 
 
