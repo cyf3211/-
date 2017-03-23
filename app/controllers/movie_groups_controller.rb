@@ -39,6 +39,29 @@ class MovieGroupsController < ApplicationController
     @movie_group.destroy
     redirect_to movie_groups_path, alert: "删除成功！"
   end
+
+  def favorite
+    @movie_group = MovieGroup.find(params[:id])
+    if !current_user.favorite?(@movie_group)
+      current_user.favorite!(@movie_group)
+      flash[:notice] = "收藏成功！"
+    else
+      flash[:warning] = "你已经收藏过了！"
+    end
+    redirect_to movie_group_path(@movie_group)
+  end
+
+  def unfavorite
+    @movie_group = MovieGroup.find(params[:id])
+    if current_user.favorite?(@movie_group)
+      current_user.unfavorite!(@movie_group)
+      flash[:alert] = "已取消收藏！"
+    else
+      flash[:warning] = "还未收藏"
+    end
+    redirect_to movie_group_path(@movie_group)
+  end
+
   private
 
   def movie_group_params

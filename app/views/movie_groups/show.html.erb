@@ -2,10 +2,12 @@
   <div class="movie_group">
      <%= link_to("新增影评", new_movie_group_review_path(@movie_group), class: "btn btn-default pull-right")%>
      <span class="pull-right">
-       <% if current_user && current_user.favorite?(@group) %>
+       <% if current_user && current_user.favorite?(@movie_group) %>
        <label class="label label-success"> 已收藏 </label>
+       <%= link_to("取消收藏", unfavorite_movie_group_path(@movie_group), method: :post, class: "btn btn-default") %>
        <% else %>
        <label class="label label-warning"> 未收藏 </label>
+       <%= link_to("收藏", favorite_movie_group_path(@movie_group), method: :post, class: "btn btn-default") %>
        <% end %>
      </span>
     <% if current_user && current_user == @movie_group.user %>
