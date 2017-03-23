@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="movie_group">
+    <%= link_to("新建电影", new_movie_group_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>电影</td>
+        <td>详情</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movie_groups.each do |movie_group| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(movie_group.title, movie_group_path(movie_group)) %></td>
+          <td><%= movie_group.description %></td>
+          <td>
+              <%= link_to("Edit", edit_movie_group_path(movie_group), class: "btn btn-sm btn-default")%>
+              <%= link_to("Delete", movie_group_path(movie_group),    class: "btn btn-sm btn-default",
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
