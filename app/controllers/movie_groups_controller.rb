@@ -48,6 +48,7 @@ class MovieGroupsController < ApplicationController
     @movie_group = MovieGroup.find(params[:id])
     if current_user != @movie_group.user
     redirect_to root_path, alert: "对不起，你没有权限"
+    end
   end
 
 end
