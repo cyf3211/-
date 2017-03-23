@@ -1,6 +1,6 @@
 class MovieGroupsController < ApplicationController
-  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
-   before_action :find_movie_group_and_check_permission, only: [:edit, :update, :destroy]
+  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy, :favorite, :unfavorite]
+  before_action :find_movie_group_and_check_permission, only: [:edit, :update, :destroy]
   def index
     @movie_groups = MovieGroup.all
   end
@@ -18,6 +18,7 @@ class MovieGroupsController < ApplicationController
     @movie_group = MovieGroup.new(movie_group_params)
     @movie_group.user = current_user
     if @movie_group.save
+      current_user.favorite!(@movie_group)
       redirect_to movie_groups_path
     else
       render :new
