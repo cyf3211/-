@@ -1,9 +1,28 @@
 <div class="col-md-12">
   <div class="movie_group">
+     <%= link_to("新增影评", new_movie_group_review_path(@movie_group), class: "btn btn-default pull-right")%>
     <% if current_user && current_user == @movie_group.user %>
       <%= link_to("编辑", edit_movie_group_path(@movie_group), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
   <h2><%= @movie_group.title %></h2>
   <p><%= @movie_group.description %></p>
+  <table class="table">
+     <thead>
+       <tr>
+          <th>影评</th>
+          <th>发表者</th>
+          <th>发表时间</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @reviews.each do |review| %>
+         <tr>
+           <td><%= review.content %></td>
+           <td><%= review.user.email %></td>
+           <td><%= review.created_at %></td>
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
 </div>

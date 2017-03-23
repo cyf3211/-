@@ -7,6 +7,7 @@ class MovieGroupsController < ApplicationController
 
   def show
     @movie_group = MovieGroup.find(params[:id])
+    @reviews = @movie_group.reviews
   end
 
   def new
