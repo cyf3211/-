@@ -17,9 +17,9 @@
           <td><%= link_to(movie_group.title, movie_group_path(movie_group)) %></td>
           <td><%= movie_group.description %></td>
           <td>
-              <%= link_to("Edit", edit_movie_group_path(movie_group), class: "btn btn-sm btn-default")%>
-              <%= link_to("Delete", movie_group_path(movie_group),    class: "btn btn-sm btn-default",
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
+              <%= link_to("编辑", edit_movie_group_path(movie_group), class: "btn btn-sm btn-default")%>
+              <%= link_to("删除", movie_group_path(movie_group),    class: "btn btn-sm btn-default",
+                          method: :delete, data: { confirm: "确定要删除?" } )%>
           </td>
         </tr>
       <% end %>

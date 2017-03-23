@@ -1,0 +1,7 @@
+<div class="col-md-12">
+  <div class="movie_group">
+    <%= link_to("编辑", edit_movie_group_path(@movie_group), class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @movie_group.title %></h2>
+  <p><%= @movie_group.description %></p>
+</div>
