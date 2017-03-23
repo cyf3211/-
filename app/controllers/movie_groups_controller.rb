@@ -1,4 +1,5 @@
 class MovieGroupsController < ApplicationController
+   before_action :authenticate_user! , only: [:new]
   def index
     @movie_groups = MovieGroup.all
   end
