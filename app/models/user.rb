@@ -7,4 +7,17 @@ class User < ApplicationRecord
    has_many :reviews
    has_many :movie_group_relationships
    has_many :participated_movie_groups, :through => :movie_group_relationships, :source => :movie_group
+
+   def favorite?(movie_group)
+      participated_movie_groups.include?(movie_group)
+   end
+
+
+  def favorite!(movie_group)
+    participated_movie_groups << movie_group
+  end
+
+  def unfavorite!(movie_group)
+    participated_movie_groups.delete(movie_group)
+  end
 end
